@@ -16,10 +16,28 @@ hudba = document.querySelector("#hudba");
 
 window.addEventListener("keydown", gameIsOn);
 
+
+// funkce pro nahodné vygenerování nové pozice mince
+// a umístění mince na tyto souřadnice
+function novaMince() {
+	// zjistíme šířku a výšku mince
+	minceVyska = mince.height;
+	minceSirka = mince.width;
+
+// a vygenerujeme první minci na náhodné pozici
+	minceX = Math.round(Math.random() * (window.innerWidth - minceSirka));
+	minceY = Math.round(Math.random() * (window.innerHeight - minceVyska));
+
+	mince.style.top = minceY + "px";
+	mince.style.left = minceX + "px";
+}
+
+
 // tato funkce se spustí při načtení stránky
 // tj. ve chvíli, kdy je načtené komplet HTML, CSS a všechny obrázky a zvuky
 function priNacteniStranky() {
 
+	novaMince();
 	// do globálních proměnných si uložíme odkaz na objekty panáčka a mince,
 	// abychom je nemuseli při každém použití znovu na stránce hledat pomocí document.querySelector
 
@@ -43,21 +61,6 @@ function priNacteniStranky() {
 }
 
 
-
-// funkce pro nahodné vygenerování nové pozice mince
-// a umístění mince na tyto souřadnice
-function novaMince() {
-	// zjistíme šířku a výšku mince
-	minceVyska = mince.height;
-	minceSirka = mince.width;
-
-// a vygenerujeme první minci na náhodné pozici
-	minceX = Math.round(Math.random() * (window.innerWidth - minceSirka));
-	minceY = Math.round(Math.random() * (window.innerHeight - minceVyska));
-
-	mince.style.top = minceY + "px";
-	mince.style.left = minceX + "px";
-}
 
 // tato funkce se zavolá při stisku klávesy
 // do proměnné "udalost" se vloží objekt s parametry události¨
